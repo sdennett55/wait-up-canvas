@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'staatliches';
+  src: url('fonts/staatliches.woff2') format('woff2'), url('fonts/staatliches.woff') format('woff');
+  font-display: swap;
+  font-weight: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  font-family: 'staatliches', Arial, Helvetica, sans-serif;
+  max-height: 100vh;
+
+  &-button {
+    display: block;
+    border-radius: 5px;
+    background: green;
+    padding: 1em;
+    color: white;
+    margin: 3em 1em 0;
+    text-align: center;
+    text-decoration: none;
+  }
+  &-controls {
+    padding: 2em;
+    flex-grow: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  &-controlBlock,
+  input[type="text"] {
+    margin: 1em 0;
+  }
+  &-controlBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > span {
+      width: 2em;
+      text-align: right;
+    }
+  }
+  input[type="text"] {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+  }
+  input[type="range"] {
+    flex-grow: 1;
+  }
+}
+canvas {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  // width: 1000px;
+  // height: 1000px;
+}
+.canvas {
+  background: #e0dddd;
+}
