@@ -156,11 +156,11 @@ class App extends React.Component {
               <input type="text" placeholder="title" onChange={e => this.handleText(e, name)} />
               <div className="App-controlBlock">
                 <input type="range" min="0" max="1000" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
-                <span><input type="text" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} /></span>
+                <input type="text" className="App-numBlock" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
               </div>
               <div className="App-controlBlock">
                 <input type="range" min="0" max="1000" value={this.state[coords].y} onChange={e => this.handleRange(e, coords, 'y')} />
-                <span>{this.state[coords].y}</span>
+                <input type="text" className="App-numBlock" value={this.state[coords].y} onChange={e => this.handleRange(e, coords, 'y')} />
               </div>
             </>
           ))}

@@ -46,12 +46,18 @@
   }
   input[type="text"] {
     display: block;
-    padding: 4px 8px;
+    padding: 8px;
     border-radius: 3px;
     border: 1px solid #dedede;
   }
   input[type="range"] {
     flex-grow: 1;
+  }
+  body & &-numBlock {
+    width: 4em;
+    text-align: center;
+    padding: .5em 1em;
+    margin-left: 1em;
   }
 }
 canvas {
