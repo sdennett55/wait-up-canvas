@@ -11,39 +11,39 @@ class App extends React.Component {
 
   state = {
     url: null,
-    title: '',
-    subtitle: '',
-    three: '',
-    four: '',
-    five: '',
-    six: '',
+    title: 'first line',
+    subtitle: 'second line',
+    three: 'a. ',
+    four: 'b. ',
+    five: 'c. ',
+    six: 'd. ',
     seven: '',
     eight: '',
     nine: '',
     ten: '',
     oneCoords: {
-      x: 100,
-      y: 100
+      x: 541,
+      y: 98
     },
     twoCoords: {
-      x: 100,
-      y: 100
+      x: 541,
+      y: 194
     },
     threeCoords: {
-      x: 100,
-      y: 100
+      x: 226,
+      y: 431
     },
     fourCoords: {
-      x: 100,
-      y: 100
+      x: 226,
+      y: 557
     },
     fiveCoords: {
-      x: 100,
-      y: 100
+      x: 226,
+      y: 682
     },
     sixCoords: {
-      x: 100,
-      y: 100
+      x: 226,
+      y: 807
     },
     sevenCoords: {
       x: 100,
@@ -71,6 +71,7 @@ class App extends React.Component {
     newImage.src = bgImage;
     newImage.onload = () => {
       ctx.drawImage(newImage, 0, 0);
+      this.handleText();
     };
     ctx.width = 1080;
     ctx.height = 1080;
@@ -91,8 +92,10 @@ class App extends React.Component {
     ctx.font = '90px staatliches';
     ctx.fillStyle = '#ffffff';
     if (typeof e === 'undefined') {
+      ctx.textAlign = "center";
       ctx.fillText(this.state.title, this.state.oneCoords.x, this.state.oneCoords.y);
       ctx.fillText(this.state.subtitle, this.state.twoCoords.x, this.state.twoCoords.y);
+      ctx.textAlign = "left";
       ctx.fillText(this.state.three, this.state.threeCoords.x, this.state.threeCoords.y);
       ctx.fillText(this.state.four, this.state.fourCoords.x, this.state.fourCoords.y);
       ctx.fillText(this.state.five, this.state.fiveCoords.x, this.state.fiveCoords.y);
@@ -104,8 +107,10 @@ class App extends React.Component {
       this.setState({ url: this.canvas.current.toDataURL() });
     } else {
       this.setState({ [title]: e.target.value }, () => {
+        ctx.textAlign = "center";
         ctx.fillText(this.state.title, this.state.oneCoords.x, this.state.oneCoords.y);
         ctx.fillText(this.state.subtitle, this.state.twoCoords.x, this.state.twoCoords.y);
+        ctx.textAlign = "left";
         ctx.fillText(this.state.three, this.state.threeCoords.x, this.state.threeCoords.y);
         ctx.fillText(this.state.four, this.state.fourCoords.x, this.state.fourCoords.y);
         ctx.fillText(this.state.five, this.state.fiveCoords.x, this.state.fiveCoords.y);
@@ -153,7 +158,7 @@ class App extends React.Component {
 
           {Object.entries(this.textInputs).map(([name, coords]) => (
             <>
-              <input type="text" placeholder="title" onChange={e => this.handleText(e, name)} />
+              <input type="text" placeholder="title" value={this.state[name]} onChange={e => this.handleText(e, name)} />
               <div className="App-controlBlock">
                 <input type="range" min="0" max="1000" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
                 <input type="text" className="App-numBlock" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
