@@ -158,7 +158,7 @@ class App extends React.Component {
 
           {Object.entries(this.textInputs).map(([name, coords]) => (
             <>
-              <input type="text" placeholder="title" value={this.state[name]} onChange={e => this.handleText(e, name)} />
+              <input type="text" placeholder="title" tabIndex="1" value={this.state[name]} onChange={e => this.handleText(e, name)} />
               <div className="App-controlBlock">
                 <input type="range" min="0" max="1000" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
                 <input type="text" className="App-numBlock" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
