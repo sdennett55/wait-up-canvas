@@ -131,7 +131,15 @@ class App extends React.Component {
     }), () => {
       this.handleText();
     });
-  }
+  };
+
+  randomizer = (name) => {
+    const randomized = this.state[name].split(' ').map(word => word.split('').sort(() => Math.random() > .5 ? 1 : -1).join('')).join(' '); 
+
+    this.setState({ [name]: randomized }, () => {
+      this.handleText();
+    })
+  };
 
   textInputs = {
     title: 'oneCoords',
@@ -159,6 +167,7 @@ class App extends React.Component {
           {Object.entries(this.textInputs).map(([name, coords]) => (
             <>
               <input type="text" placeholder="title" tabIndex="1" value={this.state[name]} onChange={e => this.handleText(e, name)} />
+              <button onClick={() => this.randomizer(name)}>Randomizer</button>
               <div className="App-controlBlock">
                 <input type="range" min="0" max="1000" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
                 <input type="text" className="App-numBlock" value={this.state[coords].x} onChange={e => this.handleRange(e, coords, 'x')} />
